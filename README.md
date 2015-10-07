@@ -13,13 +13,13 @@ Instead please donate to [charity: water](http://charitywater.org/).
 
 ## Building
 
-[![Build Status](https://secure.travis-ci.org/madrobby/zepto.png?branch=master)](http://travis-ci.org/madrobby/zepto)
+[![Build Status](https://secure.travis-ci.org/madrobby/zepto.svg?branch=master)](http://travis-ci.org/madrobby/zepto)
 
 The official site offers a download of the default distribution of Zepto. This
 is good for starting out. However, at some point you might want to add some
 optional modules and remove some of the default ones you don't need, to keep the
 size at a minimum. That's when you need to check out Zepto's source code and use
-the build commands.
+the build commands. Alternatively you can use the web based [Zepto Builder](http://github.e-sites.nl/zeptobuilder/).
 
 You will need Node.js installed on your system.
 
@@ -29,6 +29,10 @@ $ npm run-script dist
 
 # do a custom build
 $ MODULES="zepto event data" npm run-script dist
+
+# on Windows
+c:\zepto> SET MODULES=zepto event data
+c:\zepto> npm run-script dist
 ~~~
 
 The resulting files are:
@@ -39,8 +43,15 @@ The resulting files are:
 If you install CoffeeScript globally, you can run `make` directly:
 
 ~~~ sh
+# one-time operation
+$ npm install coffee-script --global
+
 $ coffee make dist
 $ MODULES="zepto event data ..." ./make dist
+
+# on Windows
+c:\zepto> SET MODULES=zepto event data
+c:\zepto> coffee make dist
 ~~~
 
 ## Zepto modules
@@ -190,6 +201,12 @@ This will submit a pull request to us that we can review.
 2. Check [existing issues][issues]. Open a new one, including exact browser &
    platform information. For better formatting of your report, see
    [GitHub-flavored Markdown][mkd].
+
+### Help! It doesn't work in browserify!
+
+We have received complaints about not supporting popular JavaScript module loaders countless times. [Here](https://github.com/madrobby/zepto/pull/342#issuecomment-3006524) is a short explanation of our decision. A good JS loader should have a way to shim libraries which don't follow the CommonJS/AMD/UMD pattern.
+
+[Here is an example](https://github.com/silvenon/zepto-module-demo) of shimming Zepto for browserify, allowing you to easily import only needed modules while leaving the source code untouched.
 
 ### Running tests
 
